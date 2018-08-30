@@ -45,6 +45,7 @@ module.exports = {
 
     allUsers: async (req, res) => {
         
+        // req.user = user login use oauth
         console.log('req allUser => ', req.user)
 
         try {
@@ -148,9 +149,13 @@ module.exports = {
 
     signin: async (req, res) => {
         try{
-            
+
             let _email = req.body.email
             let _pass = req.body.pass
+
+            if(_email === '' && _pass === '') {
+                return res.status(401).json(setJson(false, 'Unaterlize', {}))
+            }
 
             // find user
             let _user = await User._findOne({ email: _email })

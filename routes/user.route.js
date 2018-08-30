@@ -9,7 +9,7 @@ const { validateBody, schemas } = require('../validator/user.validator')
 
 // include passport
 const passport = require('passport')
-require('../passports/user.passport')
+// require('../passports/user.passport')
 
 router.route('/')
     .get(
